@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>LAKE HOURS 잠실</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter+Tight:wght@500;600;700&display=swap">
+<style>
+/* Layout: 애플 제품 페이지식. 섹션마다 큰 헤드라인 1줄 + 짧은 서브 + 인포그래픽. 흰/연회색 밴드 교차, 상세 근거는 접힘 */
+:root{
+  --bg:#FFFFFF; --alt:#F5F5F7; --fg:#1D1D1F; --muted:#6E6E73; --line:#D2D2D7;
+  --lake:#2F7A93; --oak:#B07A48; --sage:#7E9A84; --soft:#E8E2D8; --good:#2E8B57; --warn:#C0563B; --tile:#FFFFFF;
+  --f-head:"Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif; --f-num:"Inter Tight", -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#000000;--alt:#101012;--fg:#F5F5F7;--muted:#A1A1A6;--line:#38383C;--lake:#6FB7CF;--oak:#D7A06E;--sage:#A3C1A9;--soft:#2A2723;--good:#5CC98A;--warn:#F08A6E;--tile:#1C1C1E;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#000000;--alt:#101012;--fg:#F5F5F7;--muted:#A1A1A6;--line:#38383C;--lake:#6FB7CF;--oak:#D7A06E;--sage:#A3C1A9;--soft:#2A2723;--good:#5CC98A;--warn:#F08A6E;--tile:#1C1C1E;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-head);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.band{padding-block:96px}
+.band.alt{background:var(--alt)}
+.in{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));display:grid;gap:48px}
+.hgroup{display:grid;gap:12px;text-align:center;justify-items:center}
+.kick{font-size:15px;font-weight:500;color:var(--oak)}
+h1{font-size:clamp(44px,8vw,88px);font-weight:900;letter-spacing:-.035em;line-height:1.04;margin:0;text-wrap:balance}
+h2{font-size:clamp(32px,5.2vw,56px);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin:0;text-wrap:balance}
+h3{font-size:21px;font-weight:700;letter-spacing:-.015em;margin:0}
+.sub{font-size:clamp(17px,2.2vw,22px);color:var(--muted);max-width:40ch;margin:0;font-weight:400;text-wrap:balance}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.grid{display:grid;gap:16px}
+.c2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.c3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.c4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.tile{background:var(--tile);border-radius:22px;padding:28px;display:grid;gap:10px;align-content:start;min-width:0}
+.band:not(.alt) .tile{background:var(--alt)}
+.big{font-family:var(--f-num);font-size:clamp(44px,6vw,64px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.big small{font-size:.42em;font-weight:600;color:var(--muted);margin-left:2px}
+.lbl{font-size:14px;color:var(--muted)}
+.up{color:var(--good);font-family:var(--f-num);font-weight:600;font-size:14px}
+.warn{color:var(--warn)}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:var(--f-num);font-size:12px;fill:var(--muted)}
+svg .v{fill:var(--fg);font-weight:600}
+details{font-size:13px;color:var(--muted)}
+details summary{cursor:pointer;color:var(--lake);font-size:14px;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:" ›"}
+details[open] summary::after{content:" ⌄"}
+details div{padding-top:10px;display:grid;gap:6px;max-width:80ch}
+a{color:var(--lake)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.chip{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;background:var(--tile)}
+.chip b{color:var(--oak);font-weight:700;margin-right:6px}
+.fw{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;font-size:13px;color:var(--muted)}
+.fw span{background:var(--tile);border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--fg)}
+.fw i{font-style:normal;color:var(--muted)}
+.funnel{display:grid;gap:8px}
+.fun{display:flex;align-items:center;gap:14px}
+.fun .bar{height:44px;border-radius:12px;background:var(--soft);display:flex;align-items:center;padding:0 16px;font-family:var(--f-num);font-weight:700;font-size:20px;min-width:64px}
+.fun .bar.on{background:var(--lake);color:#fff}
+.fun .t{font-size:14px;color:var(--muted);min-width:0}
+.matrix{overflow-x:auto}
+.matrix table{border-collapse:separate;border-spacing:6px;min-width:620px;width:100%;font-size:13px}
+.matrix th{font-weight:500;color:var(--muted);text-align:left;padding:4px}
+.matrix td{text-align:center;border-radius:10px;padding:10px 4px;font-family:var(--f-num);font-weight:700;font-size:16px}
+.persona{display:grid;gap:14px}
+.persona .who{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.persona .menu{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:12px}
+.persona .menu div{display:flex;justify-content:space-between;gap:10px;font-size:15px}
+.time{font-size:12px;color:var(--muted);font-family:var(--f-num)}
+#scene{width:100%;aspect-ratio:16/9;border-radius:22px;background:var(--soft);touch-action:none;display:block;max-width:100%}
+.sw{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.sw div{display:grid;gap:6px;justify-items:center;font-size:12px;color:var(--muted)}
+.sw i{width:56px;height:56px;border-radius:50%;display:block;border:1px solid var(--line)}
+.journey{display:grid;grid-template-columns:repeat(7,minmax(120px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px}
+.journey div{background:var(--tile);border-radius:16px;padding:16px;display:grid;gap:4px;font-size:13px;color:var(--muted);align-content:start}
+.journey b{color:var(--fg);font-size:15px}
+.journey .n{font-family:var(--f-num);color:var(--oak);font-weight:700;font-size:13px}
+.tier{display:grid;gap:14px}
+.tier-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.tier-h .n{font-family:var(--f-num);font-weight:700;color:var(--oak)}
+.mi{display:grid;gap:10px}
+.mi .row{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.pbar{position:relative;height:8px;border-radius:4px;background:var(--line)}
+.pbar .p{position:absolute;inset:0 auto 0 0;border-radius:4px;background:var(--oak)}
+.pbar .cap{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--warn)}
+.meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);font-family:var(--f-num);flex-wrap:wrap;gap:6px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:13px;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:var(--c);vertical-align:-1px}
+input[type=range]{width:100%;accent-color:var(--lake)}
+.ctrl{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+.ctrl b{color:var(--fg);font-family:var(--f-num)}
+footer{font-size:12px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<!-- HERO -->
+<div class="band">
+  <div class="in">
+    <div class="hgroup">
+      <div class="kick">신규 카페 출점 제안 · 2026.11</div>
+      <h1>잠실,<br>호수의 시간.</h1>
+      <p class="sub">서울 255개 상권을 같은 잣대로 비교해, 결제·교통이 3년 연속 성장한 곳을 골랐습니다. 그곳에 여는 카페, LAKE HOURS.</p>
+    </div>
+    <div class="grid c4">
+      <div class="tile"><div class="lbl">카드매출 · 2026 2분기</div><div class="big num">3,925<small>억</small></div><div class="up">3년 연속 ↑</div></div>
+      <div class="tile"><div class="lbl">결제 건수</div><div class="big num">1,585<small>만</small></div><div class="up">3년 연속 ↑</div></div>
+      <div class="tile"><div class="lbl">20–50대 결제</div><div class="big num">86<small>%</small></div><div class="up">255곳 중 상위 5%</div></div>
+      <div class="tile"><div class="lbl">지하철 승하차 · 6월</div><div class="big num">73.8<small>만</small></div><div class="up">3년 연속 ↑ · +10%/년</div></div>
+    </div>
+    <div class="fw"><span>상권 거르기</span><i>→</i><span>점수</span><i>→</i><span>성장 이유</span><i>→</i><span>위치</span><i>→</i><span>타깃 고객</span><i>→</i><span>공간·동선</span><i>→</i><span>메뉴</span><i>→</i><span>수익 계산</span></div>
+  </div>
+</div>
+
+<!-- 01 GATE -->
+<div class="band alt">
+  <div class="in">
+    <div class="hgroup">
+      <div class="kick">01 · 상권 선정 — 조건으로 거르고, 점수로 확인</div>
+      <h2>3년 내내 성장한 상권은<br>잠실 한 곳뿐이었습니다.</h2>
+      <p class="sub">서울의 큰 상권 255곳을 조건 4개로 차례로 걸렀습니다. 매년 같은 2분기끼리 비교했습니다.</p>
+    </div>
+    <div class="tile funnel">
+        <h3>조건을 하나씩 걸 때마다 남은 상권 수</h3>
+        <div class="fun"><div class="bar" style="width:100%">255곳</div></div><div class="fun"><div class="t">출발: 서울의 번화가·관광특구 전체</div></div>
+        <div class="fun"><div class="bar" style="width:42%">20곳</div><div class="t">① 카드 매출액이 3년 연속 늘었다</div></div>
+        <div class="fun"><div class="bar" style="width:28%">2곳</div><div class="t">② 카드 결제 횟수도 3년 연속 늘었다</div></div>
+        <div class="fun"><div class="bar on" style="width:24%">1곳</div><div class="t">③ 지하철 이용객이 3년 연속 늘고, ④ 20–50대 방문객이 3년 전보다 많다 → <b style="color:var(--fg)">잠실 관광특구</b></div></div>
+        <div class="lbl" style="margin-top:12px;color:var(--fg);font-size:15px"><b>배점을 6가지로 바꿔도 잠실은 늘 3등 안.</b> <span class="lbl">(숫자 = 등수)</span></div>
+        <div id="sens" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:8px"></div>
+        <details><summary>조건을 정한 방법</summary><div>
+          <span>① 결제금액, ② 결제건수, ③ 지하철 승하차(상권 중심 700m 역)는 3번의 전년 대비 증가가 모두 플러스여야 합니다.</span>
+          <span>④ 20–50대 유동인구는 2023→2026 순증으로 봤습니다. 결제와 지하철은 실제 거래·승하차 건수지만, 유동인구는 통신 신호로 추정한 값이라 분기마다 오차가 큽니다. 그래서 이 항목만 "매년 늘었나" 대신 "3년 전보다 많아졌나"로 봤습니다. 잠실은 310만→319만→317만→360만으로, 2025년에 0.6% 줄었다가 13.5% 늘었습니다. 같은 해 서울 255곳은 평균 1.0% 줄었고, 상권마다 보통 ±8.5% 정도 오르내렸습니다. 잠실의 -0.6%는 서울 평균보다 덜 줄었고, 평소 흔들림 폭의 10분의 1도 안 되는 작은 변화입니다.</span>
+          <span>점수만 보면 잠실은 2등입니다(명동 80.8점, 잠실 80.4점). 잠실을 고른 이유는 조건 4개를 모두 통과한 유일한 곳이기 때문입니다. 명동은 2025년에 카드 매출액과 결제 횟수가 줄어 ①②에서 떨어졌습니다.</span>
+          <span>화제성은 구 단위 문화행사 수로만 점수에 넣어(100점 중 5점) 상권끼리 차이가 잘 드러나지 않습니다. 상권별 SNS 언급량은 공개 데이터가 없어 기사로 보완했습니다.</span>
+        </div></details>
+        <details><summary>점수 계산법</summary><div>
+          <span>11개 항목마다 255곳 중 몇 등인지를 점수로 바꿔 아래 배점(100점 만점)대로 더했습니다. 카드 매출 연평균 증가율 15 · 결제 횟수 10 · 20–50대 비중 5 · 점심·저녁 매출 10 · 20–50대 유동 15 · 점심·저녁 유동 5 · 지하철 10 · 지하철 점심·저녁 5 · 카페매출 10 · 카페 점포당 매출 10 · 문화행사 5.</span>
+          <span>'최근 2년만' 배점은 2023→24년 잠실 매출이 3.4배로 갑자기 뛴 구간(대형 쇼핑몰 매출이 통계에 새로 잡힌 것으로 추정)을 빼고 계산했습니다. 이 기간만 봐도 매출액·결제 횟수는 해마다 늘었습니다.</span>
+        </div></details>
+    </div>
+    <div class="tile">
+      <h3>"몇 번 늘었나"로 세어 봐도 잠실이 1등</h3>
+      <div class="lbl">조건 4개를 3년 동안 매년 확인하면 모두 12번입니다. 그중 몇 번 늘었는지를 셌습니다. 잠실은 12번 중 11번 늘어 1등이고, 명동은 10번입니다.</div>
+      <svg id="cg" viewBox="0 0 600 170"></svg>
+    </div>
+    <div class="grid c4" id="trend"></div>
+  </div>
+</div>
+
+<!-- 01-2 TIME -->
+<div class="band">
+  <div class="in">
+    <div class="hgroup">
+      <div class="kick">언제, 누가 쓰나</div>
+      <h2>점심과 저녁에 57%.</h2>
+      <p class="sub">11–14시, 17–21시에 매출이 몰립니다. 저녁이 하루의 정점입니다.</p>
+    </div>
+    <div class="grid c2">
+      <div class="tile"><h3>시간대별 매출 비중</h3><svg id="tz" viewBox="0 0 460 200"></svg><div class="legend"><span style="--c:var(--lake)">점심·저녁</span><span style="--c:var(--line)">그 외</span></div></div>
+      <div class="tile"><h3>연령별 매출 비중</h3><svg id="age" viewBox="0 0 460 200"></svg><div class="legend"><span style="--c:var(--oak)">타깃 20–50대</span></div></div>
+    </div>
+    <div class="grid c3">
+      <div class="tile"><div class="lbl">17–21시 유동인구</div><div class="big num">103<small>만</small></div><div class="lbl">하루 중 최대</div></div>
+      <div class="tile"><div class="lbl">지하철 승하차 중 점심·저녁 비율</div><div class="big num">38<small>%</small></div><div class="lbl">하루 승하차 10명 중 4명이 11–14시·17–20시에 타고 내림</div></div>
+      <div class="tile"><div class="lbl">카페 결제 1건</div><div class="big num">9,529<small>원</small></div><div class="lbl">가격 설정 기준</div></div>
+    </div>
+    <div class="tile">
+      <h3>2등 명동과 비교하면</h3>
+      <div class="lbl">시간대·연령 비중은 비슷하고, 사람 수는 점심 1.4배·저녁 2.4배로 잠실이 많습니다. (2026년 2분기)</div>
+      <svg id="cmp" viewBox="0 0 640 296"></svg>
+      <div class="legend"><span style="--c:var(--lake)">잠실 관광특구</span><span style="--c:var(--line)">명동</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 01-3 SUPPLY / BUZZ / RENT -->
+<div class="band alt">
+  <div class="in">
+    <div class="hgroup">
+      <div class="kick">경쟁 카페 · 화제성 · 임대료</div>
+      <h2>카페는 줄었고,<br>사람은 두 배로.</h2>
+    </div>
+    <div class="grid c3">
+      <div class="tile">
+        <div class="lbl">카페 점포 2023 → 2026</div>
+        <div class="big num">121<small>→</small>105</div>
+        <svg viewBox="0 0 300 60"><rect x="0" y="8" width="300" height="16" rx="8" fill="var(--line)"/><rect x="0" y="8" width="207" height="16" rx="8" fill="var(--oak)"/><text x="0" y="48">프랜차이즈 69%</text><text x="300" y="48" text-anchor="end">독립 31%</text></svg>
+        <div class="lbl">점포당 분기 매출 9,214만 원. 점포가 정리되며 남은 매장의 몫이 커졌습니다. 프랜차이즈가 70%라 개성 있는 독립형이 들어갈 자리가 있습니다.</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">호수벚꽃축제 외국인 방문</div>
+        <div class="big num">13<small>만→</small>26<small>만</small></div>
+        <div class="up">2배 · 17일간 총 901만 명</div>
+        <div class="lbl">송파구 외국인 관광객 212만(2023) → 298만(2025)</div>
+      </div>
+      <div class="tile">
+        <div class="lbl">송리단길 1층 임대료 · 3.3㎡/월</div>
+        <div class="big num">15.4<small>만</small></div>
+        <div class="up">+7.6% / 1년</div>
+        <div class="lbl warn">일대 공실률 17.4% · 골목 매출 2년 연속 감소 → 골목 대신 호수 대로변 입지</div>
+      </div>
+    </div>
+    <details style="text-align:center"><summary>근거와 한계</summary><div style="margin:0 auto;text-align:left">
+      <span>카페 전체 매출은 2025년 2분기 116억 원에서 2026년 2분기 97억 원으로 줄었습니다. 카페 16곳이 문을 닫은 영향으로 봅니다. 가게 수는 줄고 남은 가게의 매출은 높아, 새로 들어가기 좋은 때입니다.</span>
+      <span>임대료: 서울시 API에는 임대료 시계열이 없습니다. 한국부동산원 수치(<a href="https://r114.com/trends/wiki/commercial/3cf4a6fa-284b-80fd-8fb9-d8dd84abfdc3" target="_blank" rel="noopener">부동산114 인용</a>)는 1년치뿐이라, 3년 연속 상승은 계약 전 R-ONE 원자료로 확인해야 합니다. 공실·매출 감소는 <a href="https://www.hankyung.com/article/2026072176621" target="_blank" rel="noopener">한국경제</a>, 잠실새내 공실률 0.27%는 <a href="https://biz.heraldcorp.com/article/10457136" target="_blank" rel="noopener">헤럴드경제</a>.</span>
+      <span>화제성: 서울시 데이터에는 SNS 언급량이 없어 축제 방문 빅데이터(<a href="https://www.heraldk.com/article/2026042814594855737" target="_blank" rel="noopener">헤럴드</a>), 외국인 관광객 통계(<a href="https://www.heraldk.com/article/2026031513414933197" target="_blank" rel="noopener">헤럴드</a>), 서울시 문화행사 건수(송파구 157 → 264 → 167건)를 함께 봤습니다.</span>
+    </div></details>
+  </div>
+</div>
+
+<!-- 01-4 GROWTH -->
+<div class="band">
+  <div class="in">
+    <div class="hgroup">
+      <div class="kick">앞으로 5년, 잠실이 커지는 이유</div>
+      <h2>2030년, 잠실은 더 커진다.</h2>
+    </div>
+    <svg id="tl" viewBox="0 0 1000 230"></svg>
+    <div class="grid c4">
+      <div class="tile"><div class="lbl">주공5단지 재건축</div><div class="big num">+2,500<small>세대</small></div><div class="lbl">3,930 → 약 6,400세대, 최고 65층</div></div>
+      <div class="tile"><div class="lbl">상권 직장인구</div><div class="big num">13.8<small>만</small></div><div class="lbl">20–30대 5.9만</div></div>
+      <div class="tile"><div class="lbl">스포츠·전시컨벤션 단지</div><div class="big num">2027<small>착공</small></div><div class="lbl">전시·비즈니스 방문 수요</div></div>
+      <div class="tile"><div class="lbl">송파 외국인 관광객</div><div class="big num">+41<small>%</small></div><div class="lbl">2023 → 2025</div></div>
+    </div>
+    <details style="text-align:center"><summary>출처</summary><div style="margin:0 auto;text-align:left">
+      <span>재건축: <a href="https://www.etoday.co.kr/news/view/2480574" target="_blank" rel="noopener">이투데이</a>, 장미1·2·3차도 재건축 추진. 전시컨벤션(MICE): <a href="https://kbthink.com/realestate/basics/blog/251222.html" target="_blank" rel="noopener">KB Think</a>. 직장인구: 서울시 상권 직장인구(갱신 주기가 길어 규모만 참고). 일정은 보도 기준이며 공고 확인이 필요합니다.</span>
+    </div></details>
+  </div>
+</div>
+
+<!-- 02 WHERE -->
+<div class="band alt">
+  <div class="in">
+    <div class="hgroup">
+      <div class="kick">02 · 정확한 위치</div>
+      <h2>호수 건너, 타워가 정면.</h2>
+      <p class="sub">석촌호수 동호 남쪽 대로변 1층. 물 건너로 롯데월드타워가 액자처럼 걸리는 자리입니다.</p>
+    </div>
+    <div class="tile" style="padding:16px"><svg id="map" viewBox="0 0 1000 620" role="img" aria-label="석촌호수 일대 개념 지도와 출점 타깃 위치"></svg></div>
+    <div class="grid c4">
+      <div class="tile"><div class="lbl">타워까지 시야</div><div class="big num">≈450<small>m</small></div><div class="lbl">호수 위로 막힘 없음</div></div>
+      <div class="tile"><div class="lbl">석촌역 (8·9호선)</div><div class="big num">≈5<small>분</small></div><div class="lbl">도보</div></div>
+      <div class="tile"><div class="lbl">송파나루역 (9호선)</div><div class="big num">≈5<small>분</small></div><div class="lbl">도보</div></div>
+      <div class="tile"><div class="lbl">호수 산책로</div><div class="big num">2.5<small>km</small></div><div class="lbl">한 바퀴, 매장 앞 통과</div></div>
+    </div>
+    <div class="tile" style="outline:2px solid var(--warn)">
+      <div class="lbl warn">계약 전 필수 확인</div>
+      <h3>평당 월 임대료 25만 원 이하일 때만 출점</h3>
+      <div class="lbl">현재 근거는 송리단길 1층 15.4만 원(한국부동산원, 1년치)에 대로변 1.3배를 곱한 약 20만 원입니다. 잠실새내 중개 사례(전용 15–30㎡, 월 200만 원 이상 → 평당 약 22–44만 원)를 보면 이보다 높을 수 있습니다. 후보 매물 3곳 이상의 호가와 R-ONE 3년 시계열을 확인한 뒤 회수 매트릭스(06)로 판단합니다.</div>
+    </div>
+    <p class="lbl" style="text-align:center">타깃 좌표 37.5087, 127.1040 (석촌호수로 동호 남측). 지도는 개념도이며 거리는 직선 추정치입니다. <a href="https://map.naver.com/p/search/%EC%84%9D%EC%B4%8C%ED%98%B8%EC%88%98%20%EB%8F%99%ED%98%B8" target="_blank" rel="noopener">네이버 지도에서 보기</a></p>
+  </div>
+</div>
+
+<!-- 03 CONCEPT -->
+<div class="band">
+  <div class="in">
+    <div class="hgroup">
+      <div class="kick">03 · 콘셉트 — 누구에게, 무엇을 약속하나</div>
+      <h2>프랜차이즈 가격에,<br>호수 뷰와 머무는 시간.</h2>
+    </div>
+    <div class="chips">
+      <div class="chip"><b>고객층</b>산책 커플 · 쇼핑 관광객 · 점심 직장인 · 입주민</div>
+      <div class="chip"><b>핵심 타깃</b>20–50대 SNS 활발층 + 외국인</div>
+      <div class="chip"><b>약속</b>"하루 중 가장 좋은 시간"</div>
+    </div>
+    <div class="grid c4" id="personas"></div>
+    <div class="grid c3">
+      <div class="tile"><div class="lbl">참고한 해외 카페</div><h3>Fuglen · 오슬로/도쿄</h3><div class="lbl">빈티지 북유럽 원목, 낮은 조도 → 원목 마감, 낮은 펜던트</div></div>
+      <div class="tile"><div class="lbl">참고한 해외 카페</div><h3>% Arabica · 교토 아라시야마</h3><div class="lbl">물을 마주한 통유리, 짧은 바 → 호수 전면 창, 빠른 픽업</div></div>
+      <div class="tile"><div class="lbl">참고한 해외 카페</div><h3>Blue Bottle · 교토 마치야</h3><div class="lbl">중정과 자연광 → 실내 정원 존, 석재·리넨 질감</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 SPACE -->
+<div class="band alt">
+  <div class="in">
+    <div class="hgroup">
+      <div class="kick">04 · 인테리어 — 손님이 움직이는 순서대로 공간을 나눔</div>
+      <h2>돌려 보세요.</h2>
+      <p class="sub">드래그해서 회전하고, 스크롤해서 확대합니다. 주황색 선이 주문부터 좌석까지의 동선입니다.</p>
+    </div>
+    <canvas id="scene" aria-label="LAKE HOURS 33평 매장 3D 모델"></canvas>
+    <div class="legend"><span style="--c:#7FA0AE">호수 쪽 통유리</span><span style="--c:#B88A5E">원목 바·가구</span><span style="--c:#9BB09F">정원 존</span><span style="--c:#E2D2BC">소파 코너</span><span style="--c:#D9A76A">동선</span></div>
+    <div class="journey">
+      <div><span class="n">01</span><b>접근</b>통유리로 안이 보임</div>
+      <div><span class="n">02</span><b>고민</b>대기 공간 4m, 사진 메뉴판</div>
+      <div><span class="n">03</span><b>주문</b>4개국어 키오스크 2대 + 앱</div>
+      <div><span class="n">04</span><b>대기</b>픽업대를 주문대와 4m 분리</div>
+      <div><span class="n">05</span><b>머묾</b>창가 · 테이블 · 소파 · 정원</div>
+      <div><span class="n">06</span><b>공유</b>아치 포토존, 호수 액자 창</div>
+      <div><span class="n">07</span><b>떠남</b>출구 위 반납대, 산책로로</div>
+    </div>
+    <div class="grid c4">
+      <div class="tile"><div class="big num">42<small>석</small></div><div class="lbl">창가 8 · 테이블 8 · 소파 10 · 기타 16</div></div>
+      <div class="tile"><div class="big num">1.2<small>m+</small></div><div class="lbl">통로 폭 · 유모차, 캐리어 통과</div></div>
+      <div class="tile"><div class="big num">2700<small>K</small></div><div class="lbl">따뜻한 전구색 조명 · 좌석은 은은하게</div></div>
+      <div class="tile"><div class="big num">90<small>분</small></div><div class="lbl">피크 시간 창가 이용 · 원격 줄서기</div></div>
+    </div>
+    <div class="grid c3">
+      <div class="tile"><div class="lbl">벚꽃철·주말 저녁</div><div class="big num">+12<small>석</small></div><div class="lbl">전면 폴딩 테라스. 테이크아웃 "Lake Walk 키트"(음료 2 + 빵 1, 종이 트레이)로 호수 벤치까지</div></div>
+      <div class="tile"><div class="lbl">비 오는 날</div><div class="big num">0<small>김서림</small></div><div class="lbl">창 김서림 방지 필름, 우산 대여, 빗소리 플레이리스트. 정원 존이 실내 산책로 역할</div></div>
+      <div class="tile"><div class="lbl">겨울</div><div class="big num">11–2<small>월</small></div><div class="lbl">창가 담요, 호수 일루미네이션 시즌 메뉴(구운 밤 라떼), 테라스는 투명 윈드월로 전환</div></div>
+    </div>
+    <div class="sw">
+      <div><i style="background:#EFE8DC"></i>오트 벽 50%</div>
+      <div><i style="background:#B88A5E"></i>오크 20%</div>
+      <div><i style="background:#CFC6B8"></i>트래버틴 20%</div>
+      <div><i style="background:#9BB09F"></i>세이지 5%</div>
+      <div><i style="background:#7FA0AE"></i>호수 블루 5%</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 MENU -->
+<div class="band">
+  <div class="in">
+    <div class="hgroup">
+      <div class="kick">05 · 메뉴 — 가격은 스타벅스·커피빈 평균의 1.05배 이하</div>
+      <h2>익숙한 가격, 호수의 맛.</h2>
+      <p class="sub">모든 메뉴가 스타벅스·커피빈 평균 이하입니다.</p>
+    </div>
+    <div id="menuG" class="grid" style="gap:48px"></div>
+    <div class="legend"><span style="--c:var(--oak)">LAKE HOURS 가격</span><span style="--c:var(--line)">프랜차이즈 평균</span><span style="--c:var(--warn)">가격 상한선 (평균의 1.05배)</span></div>
+    <details style="text-align:center"><summary>가격 기준</summary><div style="margin:0 auto;text-align:left">
+      <span>스타벅스 톨 아메리카노 4,700원·라떼 5,200원(2025.1 인상가, <a href="https://www.segye.com/newsView/20250120518639" target="_blank" rel="noopener">세계일보</a>), 커피빈 스몰 4,800원·5,300원(최근 공개가). 그 밖의 품목은 두 브랜드 메뉴판 기준 추정치로, 출점 전 다시 확인합니다. 시그니처는 두 브랜드 시그니처 라떼 평균(6,150원 추정)을 기준으로 했습니다.</span>
+      <span>재방문 장치: 분기마다 시즌 메뉴 1종 교체(벚꽃 → 유자 → 단풍 → 겨울), 스탬프 10+1, 영어·일본어·중국어 메뉴.</span>
+    </div></details>
+  </div>
+</div>
+
+<!-- 06 NUMBERS -->
+<div class="band alt">
+  <div class="in">
+    <div class="hgroup">
+      <div class="kick">06 · 사업 시뮬레이션 — 매장 한 곳의 수익 계산</div>
+      <h2>기준안 22개월,<br>보수안 48개월.</h2>
+      <p class="sub">33평 직영 1호점, 10시부터 22시까지. 슬라이더로 조건을 바꿔 보세요.</p>
+    </div>
+    <div class="grid c4">
+      <div class="tile"><div class="lbl">면적</div><div class="big num"><span id="o-area">33</span><small>평</small></div></div>
+      <div class="tile"><div class="lbl">월 임대료</div><div class="big num"><span id="o-rent">660</span><small>만</small></div></div>
+      <div class="tile"><div class="lbl">투자비 (보증금 별도)</div><div class="big num"><span id="o-capex">3.6</span><small>억</small></div></div>
+      <div class="tile"><div class="lbl">종업원</div><div class="big num">8<small>명</small></div><div class="lbl">정규 3 · 파트 5</div></div>
+    </div>
+    <div class="tile" style="gap:24px">
+      <div class="grid c3">
+        <label class="ctrl" for="s-rent">평당 월 임대료 <b><span id="l-rent">20</span>만 원</b><input id="s-rent" type="range" min="15" max="35" step="1" value="20"></label>
+        <label class="ctrl" for="s-sales">월 매출 <b><span id="l-sales">6,500</span>만 원</b><input id="s-sales" type="range" min="4000" max="10000" step="100" value="6500"></label>
+        <label class="ctrl" for="s-area">면적 <b><span id="l-area">33</span>평</b><input id="s-area" type="range" min="25" max="45" step="1" value="33"></label>
+      </div>
+      <div class="grid c2">
+        <svg id="pl" viewBox="0 0 440 250"></svg>
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px;align-content:start">
+          <div><div class="lbl">영업 현금 이익률</div><div class="big num" id="o-ebm">25%</div></div>
+          <div><div class="lbl">투자 회수</div><div class="big num" id="o-pb">22</div></div>
+          <div><div class="lbl">하루 목표 · 대표메뉴 환산</div><div class="big num" id="o-cups">361</div></div>
+          <div><div class="lbl">적자를 면하는 최소 월 매출</div><div class="big num" id="o-bep">-</div></div>
+          <div class="lbl" style="grid-column:1/-1" id="o-note"></div>
+        </div>
+      </div>
+    </div>
+    <div class="tile">
+      <h3>매출과 임대료에 따라 투자금 회수에 걸리는 개월 수</h3>
+      <div class="grid c4" style="gap:10px">
+        <div><div class="lbl">하루 결제</div><div class="big num" style="font-size:36px">228<small>건</small></div><div class="lbl">× 객단가 9,529원</div></div>
+        <div><div class="lbl">상권 카페 결제 점유</div><div class="big num" style="font-size:36px">2.0<small>%</small></div><div class="lbl">하루 1.12만 건 중 · 105곳 평균 0.95%</div></div>
+        <div><div class="lbl">좌석 회전</div><div class="big num" style="font-size:36px">4.1<small>회/일</small></div><div class="lbl">1건 1.6명 · 매장 60% · 54석</div></div>
+        <div><div class="lbl">서울 카페 점포당 월매출</div><div class="big num" style="font-size:36px">상위 5<small>%</small></div><div class="lbl">상위 10% 4,269만 · 상위 5% 5,670만 · 최고 1.7억</div></div>
+      </div>
+      <div class="lbl">기준 6,500만 원은 서울 카페 점포 상위 5%를 넘는 공격적 목표입니다. 작은 테이크아웃 점포가 섞인 평균보다 33평·54석 대형 호수 전면 매장에 맞춘 값이며, 보수안은 상위 10% 수준인 5,000만 원입니다(서울시 추정매출, 카페 5곳 이상 상권 238곳).</div>
+      <div class="matrix"><table id="scn"></table></div>
+      <div class="lbl">— 는 적자라 회수가 안 된다는 뜻입니다. 평당 임대료 30만 원 이상이면 월 매출 5,000만 원에서 적자 → 계약 조건은 평당 25만 원 이하, 첫해 매출 5,000만 원 이상이 출점 기준선입니다.</div>
+    </div>
+    <div class="grid c2">
+      <div class="tile"><h3>투자비 구성</h3><svg id="capex" viewBox="0 0 440 190"></svg></div>
+      <div class="tile"><h3>시간대별 근무 인원</h3><svg id="staff" viewBox="0 0 440 190"></svg><div class="lbl">기본 2명 + 점심·저녁 피크에 파트 2명 = 월 1,080시간. 정규 3명 627시간(점장 오픈조, 바리스타 2명 교대) 990만 원 + 파트 5명 453시간 × 12,000원 544만 원 = 인건비 1,534만 원.</div></div>
+    </div>
+    <div class="tile"><h3>5개년 매출 목표</h3><svg id="y5" viewBox="0 0 900 230"></svg><div class="lbl">전시컨벤션 단지 착공과 주공5단지 입주가 4–5년차 성장을 받칩니다. 대표메뉴는 전체 잔수의 25%가 목표입니다.</div></div>
+    <details style="text-align:center"><summary>가정</summary><div style="margin:0 auto;text-align:left">
+      <span>임대료: 송리단길 15.37만 원/3.3㎡ × 대로변 프리미엄 1.3 ≈ 20만 원/평(보수 시나리오 30만 원). 원가 30%, 기타 8%, 마케팅 3%, 투자비는 5년에 나눠 비용 처리. 인건비는 정규 1인 330만 원(4대보험 포함), 파트 시급 12,000원(주휴 포함). 피크 처리: 에스프레소 머신 2대(추출구 3개씩), 키오스크 2대 + 앱 선주문.</span>
+    </div></details>
+  </div>
+</div>
+
+<div class="band"><div class="in"><footer>데이터: 서울 열린데이터광장 상권분석서비스(추정매출·길단위인구·점포·영역·직장인구), 지하철 시간대별 승하차, 역사마스터, 문화행사 정보 · 2026-11-07 조회. 추정매출은 카드사 기반 서울시 추정치입니다.</footer></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+const $=id=>document.getElementById(id), fmt=v=>Math.round(v).toLocaleString();
+
+// sensitivity matrix
+const SENS=[['기본 배점',2,1,3],['모두 같은 배점',3,1,2],['최근 2년만',2,1,60],['매출 성장 중시',1,2,3],['점심·저녁 중시',3,1,2],['카페 매출 중시',1,3,2]];
+$('sens').innerHTML=SENS.map(([n,r])=>`<div style="background:var(--bg);border-radius:14px;padding:12px 8px;text-align:center;display:grid;gap:2px"><span class="big num" style="font-size:32px;color:${r==1?'var(--lake)':'var(--fg)'}">${r}<small>등</small></span><span class="lbl" style="font-size:12px">${n}</span></div>`).join('');
+
+(function(){const D=[['잠실 관광특구',11,82.7],['명동',10,81.3],['천호역',11,78.2],['잠실역',9,78.0],['청량리역',10,75.1]];
+ $('cg').innerHTML=D.map(([n,s,v],i)=>{const y=6+i*32,w=(v-60)/25*380;return `<text x="0" y="${y+17}">${n}</text><rect x="110" y="${y+4}" width="${w}" height="20" rx="10" fill="${i?'var(--line)':'var(--lake)'}"/><text class="v" x="${118+w}" y="${y+18}">${v} · ${s}/12</text>`}).join('')})();
+(function(){const D=[['점심·저녁 매출 비중',57,60,'%'],['20–50대 매출 비중',86,86,'%'],['11–14시 유동인구 (점심)',67,46,'만'],['17–21시 유동인구 (저녁)',103,44,'만'],['지하철 승하차 중 점심·저녁 비율',38,40,'%'],['카페 결제 1건',9529,9090,'원']];
+ $('cmp').innerHTML=D.map(([k,a,b,u],i)=>{const y=8+i*48,m=Math.max(a,b),wa=a/m*300,wb=b/m*300,f=v=>v.toLocaleString()+u;
+  return `<text x="0" y="${y+16}" style="fill:var(--fg)">${k}</text><rect x="210" y="${y+2}" width="${wa}" height="16" rx="8" fill="var(--lake)"/><text class="v" x="${218+wa}" y="${y+15}">${f(a)}</text><rect x="210" y="${y+22}" width="${wb}" height="16" rx="8" fill="var(--line)"/><text x="${218+wb}" y="${y+35}">${f(b)}</text>`}).join('')})();
+// trend sparks
+const TR=[['카드매출','억',[1070,3624,3692,3925]],['결제 건수','만',[492,1263,1303,1585]],['지하철 승하차','천',[552,570,610,738]],['20–50대 유동','만',[310,319,317,360]]];
+$('trend').innerHTML=TR.map(([t,u,v])=>{const mx=Math.max(...v)*1.1;return `<div class="tile"><div class="lbl">${t} · ${u}</div><div class="big num" style="font-size:40px">${fmt(v[3])}</div><svg viewBox="0 0 220 90">${v.map((x,i)=>{const h=x/mx*62,X=8+i*54;return `<rect x="${X}" y="${70-h}" width="36" height="${h}" rx="6" fill="${i==3?'var(--lake)':'var(--line)'}"/><text x="${X+18}" y="86" text-anchor="middle">${['23','24','25','26'][i]}</text>`}).join('')}</svg></div>`}).join('');
+
+// time & age
+(function(){const T=['0–6','6–11','11–14','14–17','17–21','21–24'],V=[2.4,4.3,22.8,27.9,34.3,8.3];let s='';
+ T.forEach((t,i)=>{const h=V[i]/36*140,x=12+i*75,on=i==2||i==4;s+=`<rect x="${x}" y="${165-h}" width="52" height="${h}" rx="8" fill="${on?'var(--lake)':'var(--line)'}"/><text class="v" x="${x+26}" y="${158-h}" text-anchor="middle">${V[i]}%</text><text x="${x+26}" y="188" text-anchor="middle">${t}</text>`});$('tz').innerHTML=s;
+ const A=['10대','20대','30대','40대','50대','60+'],W=[.6,16.3,29.9,22.8,17.1,13.3];s='';
+ A.forEach((t,i)=>{const h=W[i]/32*140,x=12+i*75,on=i>=1&&i<=4;s+=`<rect x="${x}" y="${165-h}" width="52" height="${h}" rx="8" fill="${on?'var(--oak)':'var(--line)'}"/><text class="v" x="${x+26}" y="${158-h}" text-anchor="middle">${W[i]}%</text><text x="${x+26}" y="188" text-anchor="middle">${t}</text>`});$('age').innerHTML=s})();
+
+// growth timeline
+(function(){const E=[[2026,'벚꽃축제 외국인 2배','관광'],[2027,'전시컨벤션 단지 착공','오피스·전시'],[2028,'LAKE HOURS 3년차','매장'],[2030,'주공5단지 입주 (예상)','+2,500세대'],[2031,'전시컨벤션 개장 (목표)','전시·비즈니스']];
+ let s=`<line x1="40" y1="120" x2="960" y2="120" stroke="var(--line)" stroke-width="2"/>`;const x=y=>40+(y-2026)/5*920;
+ E.forEach(([y,t,k],i)=>{const X=x(y),up=i%2==0;s+=`<circle cx="${X}" cy="120" r="9" fill="${i==2?'var(--oak)':'var(--lake)'}"/><text class="v" x="${X}" y="${up?72:170}" text-anchor="middle" style="font-size:15px">${t}</text><text x="${X}" y="${up?94:192}" text-anchor="middle">${y} · ${k}</text>`});
+ $('tl').innerHTML=s})();
+
+// map (개념도, 위경도 → 화면 좌표)
+(function(){const L=[37.5048,37.5150],G=[127.0930,127.1150];const P=(la,lo)=>[(lo-G[0])/(G[1]-G[0])*1000,(L[1]-la)/(L[1]-L[0])*620];
+ const lake=(pts)=>pts.map(([a,b],i)=>{const [x,y]=P(a,b);return (i?'L':'M')+x.toFixed(0)+' '+y.toFixed(0)}).join(' ')+'Z';
+ const west=[[37.5112,127.0965],[37.5110,127.1005],[37.5098,127.1018],[37.5080,127.1010],[37.5074,127.0985],[37.5086,127.0960],[37.5102,127.0955]];
+ const east=[[37.5113,127.1030],[37.5110,127.1068],[37.5096,127.1080],[37.5080,127.1068],[37.5076,127.1040],[37.5088,127.1022],[37.5103,127.1020]];
+ let s=`<rect width="1000" height="620" fill="var(--alt)"/>`;
+ // roads
+ [[[37.5134,127.0930],[37.5134,127.1150]],[[37.5150,127.1002],[37.5048,127.1002]],[[37.5056,127.0930],[37.5056,127.1150]],[[37.5150,127.1120],[37.5048,127.1120]]].forEach(r=>{const [a,b]=r.map(p=>P(...p));s+=`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="var(--line)" stroke-width="14" stroke-linecap="round"/>`});
+ s+=`<path d="${lake(west)}" fill="color-mix(in srgb,var(--lake) 35%,transparent)"/><path d="${lake(east)}" fill="color-mix(in srgb,var(--lake) 35%,transparent)"/>`;
+ const lab=(la,lo,t,o={})=>{const [x,y]=P(la,lo);return `<text x="${x}" y="${y}" text-anchor="middle" style="font-size:${o.size||14}px;fill:${o.c||'var(--muted)'};font-weight:${o.w||500}">${t}</text>`};
+ s+=lab(37.5094,127.0987,'서호',{size:18})+lab(37.5095,127.1050,'동호',{size:18});
+ // tower, mall
+ const [tx,ty]=P(37.5126,127.1025);s+=`<rect x="${tx-10}" y="${ty-34}" width="20" height="34" rx="4" fill="var(--fg)"/>`+lab(37.5133,127.1025,'',{})+`<text x="${tx}" y="${ty-42}" text-anchor="middle" style="font-size:14px;fill:var(--fg);font-weight:700">롯데월드타워</text>`;
+ const [mx,my]=P(37.5122,127.0985);s+=`<rect x="${mx-60}" y="${my-18}" width="120" height="36" rx="8" fill="var(--soft)"/><text x="${mx}" y="${my+5}" text-anchor="middle" style="font-size:13px">롯데월드몰</text>`;
+ // stations
+ [[37.5133,127.1001,'잠실역 2·8'],[37.5056,127.1069,'석촌역 8·9'],[37.5103,127.1123,'송파나루역 9']].forEach(([a,b,t])=>{const [x,y]=P(a,b);s+=`<circle cx="${x}" cy="${y}" r="10" fill="var(--bg)" stroke="var(--lake)" stroke-width="4"/><text x="${x+16}" y="${y+5}" style="font-size:13px;fill:var(--fg);font-weight:600">${t}</text>`});
+ // 송리단길
+ const [sx,sy]=P(37.5072,127.1095);s+=`<text x="${sx}" y="${sy}" text-anchor="middle" style="font-size:13px">송리단길 (골목)</text>`;
+ // sightline + target
+ const [px,py]=P(37.5087,127.1040);s+=`<line x1="${px}" y1="${py}" x2="${tx}" y2="${ty}" stroke="var(--oak)" stroke-width="3" stroke-dasharray="8 7"/>`;
+ s+=`<circle cx="${px}" cy="${py}" r="34" fill="color-mix(in srgb,var(--oak) 22%,transparent)"/><circle cx="${px}" cy="${py}" r="13" fill="var(--oak)" stroke="var(--bg)" stroke-width="4"/><text x="${px}" y="${py+60}" text-anchor="middle" style="font-size:17px;fill:var(--fg);font-weight:700">LAKE HOURS</text><text x="${px}" y="${py+80}" text-anchor="middle" style="font-size:12px">동호 남측 대로변 1층</text>`;
+ s+=`<text x="20" y="605" style="font-size:11px">개념도 · 축척 비정확 · 점선 = 타워 조망선</text>`;
+ $('map').innerHTML=s})();
+
+// personas + menu match
+const PER=[['29','주말 산책 커플','17–21시 · 창가 바',[['Seokchon Blossom Latte',6100],['호수 바스크 치즈케이크',6800]],'야경과 벚꽃 사진'],
+ ['34','외국인 관광객','14–21시 · 테이크아웃',[['Tower Cream Coffee',6000],['Lake Mist Tonic · 유자',6100],['버터 시나몬번',4500]],'한국 재료, 4개국어 키오스크, 짐 보관 락커'],
+ ['41','점심 직장인','11–14시 · 앱 선주문',[['아메리카노',4700],['소금빵',3800]],'15분 안에 픽업'],
+ ['52','재건축 단지 입주민','10–12시 · 소파 코너',[['Night Lake Latte · 흑임자',6000],['디카페인 아메리카노',5000]],'조용한 오전, 편한 의자']];
+$('personas').innerHTML=PER.map(([a,n,t,m,w])=>`<div class="tile persona"><div class="who"><h3>${n}</h3><span class="num lbl">${a}세</span></div><div class="time">${t}</div><div class="menu">${m.map(([x,p])=>`<div><span>${x}</span><span class="num">${p.toLocaleString()}</span></div>`).join('')}</div><div class="lbl">${w}</div></div>`).join('');
+
+// menu tiers
+const TIERS=[
+ {t:'대표 메뉴',k:'가게의 얼굴',big:1,items:[['Tower Cream Coffee','짭짤한 해염 크림 아래 진한 연유 에스프레소. 첫 모금은 단짠, 끝은 고소함. 높이 올린 크림이 타워 실루엣 · % Arabica 스패니시 라떼 + 대만 해염 크림',6150,6000,30]]},
+ {t:'기본 메뉴',k:'매일 많이 팔리는 메뉴',items:[['아메리카노','',4750,4700,22],['카페라떼','',5250,5200,28],['바닐라라떼','',5850,5800,29],['카푸치노','',5250,5200,28],['콜드브루','',5100,5000,24],['디카페인 아메리카노','',5050,5000,25],['티 · 얼그레이/캐모마일','',5000,4900,18],['제철 과일 에이드','',6000,5900,30]]},
+ {t:'특화 메뉴',k:'잠실에서만, 계절마다',items:[['Seokchon Blossom Latte','벚꽃 시럽과 딸기 우유의 분홍 그라데이션, 은은한 꽃향 · Blue Bottle 시즌 라떼 · 추천: 산책 커플',6150,6100,31],['Lake Mist Tonic','콜드브루와 고흥 유자 토닉의 투명한 층, 상큼하고 쌉쌀함 · Fuglen 커피 토닉 · 추천: 외국인',6150,6100,29],['Night Lake Latte','국산 흑임자의 고소함, 회청색 밤 호수 빛깔 · 교토 흑임자 라떼 · 17시 이후 · 추천: 입주민',6150,6000,30],['버터 시나몬번','Fuglen 시나몬번',4600,4500,35],['호수 바스크 치즈케이크','',6900,6800,36]]}];
+$('menuG').innerHTML=TIERS.map((T,ti)=>`<div class="tier"><div class="tier-h"><span class="n">0${ti+1}</span><h3 style="font-size:28px">${T.t}</h3><span class="lbl">${T.k}</span></div>
+ <div class="grid ${T.big?'':'c3'}">${T.items.map(([n,d,avg,p,c])=>{const cap=Math.floor(avg*1.05/10)*10,W=v=>(v/7500*100).toFixed(1)+'%';
+  return `<div class="tile mi" style="${T.big?'padding:40px;background:linear-gradient(135deg,color-mix(in srgb,var(--oak) 14%,var(--alt)),var(--alt))':''}">
+   <div class="row"><b style="font-size:${T.big?32:17}px;letter-spacing:-.02em">${n}</b><span class="num" style="font-size:${T.big?44:22}px;font-weight:700">${p.toLocaleString()}</span></div>
+   ${d?`<div class="lbl">${d}</div>`:''}
+   <div class="pbar"><div class="p" style="width:${W(p)}"></div><div class="cap" style="left:${W(cap)}"></div></div>
+   <div class="meta"><span>평균 ${avg.toLocaleString()} · 상한 ${cap.toLocaleString()}</span><span style="color:var(--good)">평균의 ${Math.round(p/avg*100)}% · 원가 ${c}%</span></div></div>`}).join('')}</div></div>`).join('');
+
+// simulation
+const LABOR=1534,SIG=6000;
+const capexOf=a=>[['인테리어',a*250],['커피 설비',5000],['권리금',5000],['가구·조명',a*60],['오픈 준비',2000],['설계·브랜딩',1500]];
+function hbar(id,rows){const mx=Math.max(...rows.map(r=>r[1]));$(id).innerHTML=rows.map(([k,v],i)=>{const y=6+i*30,w=v/mx*250;return `<text x="0" y="${y+15}">${k}</text><rect x="92" y="${y+3}" width="${w}" height="18" rx="9" fill="var(--oak)" opacity="${1-i*.12}"/><text class="v" x="${100+w}" y="${y+16}">${fmt(v)}만</text>`}).join('')}
+function sim(){const r=+$('s-rent').value,S=+$('s-sales').value,a=+$('s-area').value;
+ $('l-rent').textContent=r;$('l-sales').textContent=S.toLocaleString();$('l-area').textContent=a;
+ const rent=r*a,cx=capexOf(a),capex=cx.reduce((s,x)=>s+x[1],0),cogs=S*.3,oth=S*.11,eb=S-cogs-LABOR-rent-oth,da=capex/60,op=eb-da,bep=(LABOR+rent)/(1-.41),daily=S*1e4/30;
+ $('o-area').textContent=a;$('o-rent').textContent=fmt(rent);$('o-capex').textContent=(capex/1e4).toFixed(1);
+ $('o-ebm').textContent=Math.round(eb/S*100)+'%';$('o-pb').innerHTML=eb>0?Math.ceil(capex/eb)+'<small>개월</small>':'—';
+ $('o-cups').innerHTML=Math.round(daily/SIG)+'<small>잔</small>';$('o-bep').innerHTML=fmt(bep)+'<small>만</small>';
+ $('o-note').textContent=`일 매출 ${fmt(daily/1e4)}만 원 · 결제 ${fmt(daily/9529)}건 · 피크 6시간에 ${fmt(daily/SIG*.57)}잔(분당 ${(daily/SIG*.57/360).toFixed(1)}잔) · 임대료 ${Math.round(rent/S*100)}% · 인건비 ${Math.round(LABOR/S*100)}%`;
+ const rows=[['매출',S,'var(--lake)'],['원가',-cogs],['인건비',-LABOR],['임대료',-rent],['기타',-oth],['영업 현금이익',eb,'var(--good)'],['투자비 상각',-da],['영업이익',op,'var(--good)']];
+ $('pl').innerHTML=rows.map(([k,v,c],i)=>{const y=4+i*30,w=Math.max(Math.abs(v)/S*270,2);return `<text x="0" y="${y+16}">${k}</text><rect x="70" y="${y+4}" width="${w}" height="18" rx="9" fill="${c||(v<0?'var(--line)':'var(--good)')}"/><text class="v" x="${78+w}" y="${y+17}">${fmt(v)}</text>`}).join('');
+ hbar('capex',cx)}
+['s-rent','s-sales','s-area'].forEach(id=>$(id).addEventListener('input',sim));sim();
+(function(){const RS=[20,25,30,35],SS=[3070,5000,6500,8000],cap=capexOf(33).reduce((s,x)=>s+x[1],0);
+ const pb=(r,S)=>{const eb=S*.59-LABOR-r*33;return eb>0?Math.ceil(cap/eb):null};
+ $('scn').innerHTML=`<tr><th>월 매출 ↓ · 평당 임대료 →</th>${RS.map(r=>`<th style="text-align:center">${r}만</th>`).join('')}</tr>`+SS.map(S=>`<tr><th>${S.toLocaleString()}만${S==3070?' (상권 평균)':S==6500?' (기준)':''}</th>${RS.map(r=>{const p=pb(r,S);const c=p==null?'var(--line)':p<=24?'var(--lake)':p<=40?'color-mix(in srgb,var(--lake) 45%,transparent)':'color-mix(in srgb,var(--warn) 30%,transparent)';return `<td style="background:${c};color:${p!=null&&p<=24?'#fff':'var(--fg)'}">${p==null?'—':p}</td>`}).join('')}</tr>`).join('')})();
+(function(){const N=[2,4,4,4,2,2,2,4,4,4,2,2];$('staff').innerHTML=N.map((n,i)=>{const x=8+i*36,h=n*34;return `<rect x="${x}" y="${160-h}" width="28" height="${h}" rx="8" fill="${n>2?'var(--oak)':'var(--line)'}"/><text class="v" x="${x+14}" y="${153-h}" text-anchor="middle">${n}</text><text x="${x+14}" y="180" text-anchor="middle">${10+i}</text>`}).join('')})();
+(function(){const V=[7.8,8.58,9.27,9.92,10.51];$('y5').innerHTML=V.map((v,i)=>{const x=40+i*170,h=v/11*160,c=Math.round(v*1e8/365/SIG);return `<rect x="${x}" y="${190-h}" width="100" height="${h}" rx="12" fill="${i==4?'var(--oak)':'var(--line)'}"/><text class="v" x="${x+50}" y="${180-h}" text-anchor="middle" style="font-size:16px">${v.toFixed(1)}억</text><text x="${x+50}" y="${206}" text-anchor="middle">${i+1}년차</text><text x="${x+50}" y="${224}" text-anchor="middle">${c}잔/일</text>`}).join('')})();
+
+// 3D store (12m × 9m)
+(function(){if(!window.THREE)return;const cv=$('scene');
+ const R=new THREE.WebGLRenderer({canvas:cv,antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,2));R.shadowMap.enabled=true;
+ const S=new THREE.Scene();S.background=new THREE.Color('#EDE6DA');const C=new THREE.PerspectiveCamera(40,16/9,.1,100);C.position.set(13,12,15);
+ const O=new THREE.OrbitControls(C,cv);O.target.set(0,.6,0);O.enableDamping=true;O.maxPolarAngle=Math.PI/2.05;O.minDistance=5;O.maxDistance=32;
+ S.add(new THREE.HemisphereLight('#FFF6E8','#B8A890',.85));const sun=new THREE.DirectionalLight('#FFE7C4',.7);sun.position.set(-6,12,-8);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-10,right:10,top:10,bottom:-10});S.add(sun);
+ const M=c=>new THREE.MeshStandardMaterial({color:c,roughness:.8});
+ const box=(w,h,d,x,y,z,c,m)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m||M(c));o.position.set(x,y+h/2,z);o.castShadow=!m;o.receiveShadow=true;S.add(o);return o};
+ const cyl=(r,h,x,y,z,c)=>{const o=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,24),M(c));o.position.set(x,y+h/2,z);o.castShadow=true;S.add(o)};
+ box(12,.1,9,0,-.1,0,'#CFC6B8');box(.15,3.2,9,-6,0,0,'#EFE8DC');box(.15,3.2,9,6,0,0,'#EFE8DC');
+ box(8.6,3.2,.15,-1.7,0,4.5,'#EFE8DC');box(1,3.2,.15,5.5,0,4.5,'#EFE8DC');box(2,.6,.15,4,2.6,4.5,'#EFE8DC');
+ const glass=new THREE.MeshStandardMaterial({color:'#7FA0AE',transparent:true,opacity:.35,roughness:.1});box(12,2.7,.06,0,.3,-4.5,null,glass);box(12,.3,.15,0,0,-4.5,'#B88A5E');box(12,.2,.15,0,3,-4.5,'#B88A5E');
+ const lake=new THREE.Mesh(new THREE.PlaneGeometry(30,10),new THREE.MeshStandardMaterial({color:'#8FB0BD',roughness:.2}));lake.rotation.x=-Math.PI/2;lake.position.set(0,-.12,-10);S.add(lake);
+ const tw=new THREE.Mesh(new THREE.ConeGeometry(1.2,14,4),M('#B9C3C7'));tw.position.set(1,7,-17);S.add(tw);
+ box(1,1.05,5.6,4.9,0,-.4,'#B88A5E');box(1.1,.05,5.8,4.9,1.05,-.4,'#E5DDD0');box(.5,2.2,5.6,5.75,0,-.4,'#A57A52');cyl(.18,.35,4.9,1.1,-2.3,'#3B3F3C');cyl(.18,.35,4.9,1.1,-1.3,'#3B3F3C');
+ box(.5,1.5,.4,3.9,0,2.6,'#3B3F3C');box(.5,1.5,.4,3.9,0,1.9,'#3B3F3C');box(.6,.9,.6,3.9,0,-2.3,'#D9C7AE');
+ box(8,.06,.5,-1.5,1.05,-4.1,'#B88A5E');for(let i=0;i<8;i++)cyl(.2,.75,-5+i,0,-3.6,'#9C7550');
+ box(3.6,.06,1.1,-1.6,.74,-.6,'#B88A5E');box(3.2,.7,.1,-1.6,0,-.6,'#9C7550');for(let i=0;i<4;i++){box(.45,.45,.45,-3+i*.95,0,.2,'#EFE8DC');box(.45,.45,.45,-3+i*.95,0,-1.4,'#EFE8DC')}
+ box(.8,.45,3.4,-5.4,0,2.4,'#E2D2BC');box(.25,.5,3.4,-5.85,.45,2.4,'#E2D2BC');box(2.6,.45,.8,-4.4,0,3.9,'#E2D2BC');cyl(.45,.42,-4.4,0,2.3,'#B88A5E');cyl(.45,.42,-4.4,0,1,'#B88A5E');
+ box(1.6,.4,1.6,1.4,0,1.6,'#B88A5E');const tr=new THREE.Mesh(new THREE.SphereGeometry(.85,20,16),M('#9BB09F'));tr.position.set(1.4,1.7,1.6);tr.castShadow=true;S.add(tr);cyl(.08,1,1.4,.4,1.6,'#7A5C40');
+ [[-5.5,-3.9],[5.5,3.8],[-5.5,-.4]].forEach(([x,z])=>{cyl(.25,.5,x,0,z,'#CFC6B8');const p=new THREE.Mesh(new THREE.SphereGeometry(.45,16,12),M('#9BB09F'));p.position.set(x,.95,z);S.add(p)});
+ const arch=new THREE.Mesh(new THREE.TorusGeometry(.9,.12,10,32,Math.PI),M('#B88A5E'));arch.position.set(-5.9,1.6,-1.9);arch.rotation.y=Math.PI/2;S.add(arch);box(.1,1.6,.24,-5.9,0,-1,'#B88A5E');box(.1,1.6,.24,-5.9,0,-2.8,'#B88A5E');
+ for(let i=0;i<3;i++){const l=new THREE.Mesh(new THREE.SphereGeometry(.18,16,12),new THREE.MeshStandardMaterial({color:'#FFE3B0',emissive:'#FFC877',emissiveIntensity:.8}));l.position.set(-2.8+i*1.2,2.3,-.6);S.add(l)}
+ const wl=new THREE.PointLight('#FFC98A',.5,10);wl.position.set(-1.6,2.4,-.6);S.add(wl);
+ const pts=[[4,4.4],[3.2,2.8],[3.2,-2.1],[1.2,-2.8],[-1.5,-3]].map(([x,z])=>new THREE.Vector3(x,.04,z));
+ S.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),60,.07,8),new THREE.MeshStandardMaterial({color:'#D9A76A',emissive:'#D9A76A',emissiveIntensity:.3})));
+ const size=()=>{const w=cv.clientWidth,h=cv.clientHeight;R.setSize(w,h,false);C.aspect=w/h;C.updateProjectionMatrix()};addEventListener('resize',size);size();
+ O.autoRotate=!matchMedia('(prefers-reduced-motion: reduce)').matches;O.autoRotateSpeed=.6;cv.addEventListener('pointerdown',()=>O.autoRotate=false);
+ (function loop(){O.update();R.render(S,C);requestAnimationFrame(loop)})()})();
+</script>
+
+</body>
+</html>
